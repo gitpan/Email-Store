@@ -1,4 +1,4 @@
-use Test::More tests => 10;
+use Test::More tests => 11;
 use File::Slurp;
 BEGIN { unlink("t/test.db"); }
 use Email::Store "dbi:SQLite:dbname=t/test.db";
@@ -7,8 +7,6 @@ ok(1, "Set up");
 
 my $data = read_file("t/date-test");
 Email::Store::Mail->store($data);
-
-
 
 # We need one mail:
 my @mails = Email::Store::Mail->retrieve_all;
@@ -29,10 +27,13 @@ is ($mails[0]->day,"18");
 $data = read_file("t/date-test2");
 Email::Store::Mail->store($data);
 
+@mails = Email::Store::Mail->retrieve_all;
+is(@mails, 2, "now two mails");
+
 my @searched = Email::Store::Mail->search_between(1087516800,1087603199);
 
 is(@searched, 1, "Search only found one mail");
 
 @searched = Email::Store::Mail->search_between(1087516800,1087689600);
-is(@searched, 2, "Search only found two mail");
+is(@searched, 2, "Search found two mails");
 

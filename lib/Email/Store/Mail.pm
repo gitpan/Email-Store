@@ -1,8 +1,7 @@
 package Email::Store::Mail;
-use base 'Email::Store::DBI';
-use Time::HiRes;
-use strict; 
+use strict;
 use warnings;
+use base 'Email::Store::DBI';
 
 require Email::Store;
 
@@ -11,8 +10,9 @@ Email::Store::Mail->columns(All => qw/message_id message/);
 Email::Store::Mail->columns(Primary => qw/message_id/);
 Email::Store::Mail->columns(TEMP => qw/simple/);
 use Module::Pluggable::Ordered search_path => ["Email::Store"], only => [ keys %Email::Store::only ];
-
 use Email::Simple;
+use Email::MessageID;
+
 
 sub _simple { Email::Simple->new(shift); } # RFC2822 -> Email::Simple
 
@@ -34,8 +34,8 @@ sub store {
         return $self;
     }
 
-    $self = $class->create ({ message_id => $msgid, 
-                              message    => $rfc822, 
+    $self = $class->create ({ message_id => $msgid,
+                              message    => $rfc822,
                               simple     => $simple });
     $self->call_plugins("on_store", $self);
     $self;
@@ -43,10 +43,13 @@ sub store {
 
 sub fix_msg_id {
     my ($self, $simple) = @_;
-    my $id = $simple->header("Message-ID");
-    if ($id) { $id =~ s/.*<(.+)>.*/$1/ && return $id; }
-    my $fake = $$."-".time()."\@unknown";
-    $simple->header_set("Message-ID", "<$fake>");
+
+    if ( my $id = $simple->header("Message-ID") ) {
+        $id =~ s/.*<(.+)>.*/$1/ && return $id;
+    }
+    my $fake = Email::MessageID->new.'';
+    $simple->header_set("Message-ID", $fake);
+    $fake =~ s/^.(.*).$/$1/; # we don't want the <>
     return $fake;
 }
 

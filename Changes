@@ -1,5 +1,9 @@
 Revision history for Perl extension Email::Store.
 
+0.22 Thu Feb  3 16:11:14 GMT 2005
+    - various fixes to make it work under boxen which are not my own.
+      many many thanks to Richard Clamp and Scott McWhirter.
+  
 0.21 Thu Jan 27 16:33:32 GMT 2005
     - fixed a permission problem on PAUSE
 
