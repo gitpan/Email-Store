@@ -61,7 +61,7 @@ for (qw(name address)) {
 Email::Store::Entity->has_many("addressings" => "Email::Store::Addressing");
 Email::Store::Mail->has_many("addressings" => "Email::Store::Addressing");
 Email::Store::Addressing->has_a("entity" => "Email::Store::Entity");
-
+Email::Store::Addressing->has_a("mail" => "Email::Store::Mail");
 
 package Email::Store::Entity;
 1;
