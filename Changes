@@ -1,5 +1,8 @@
 Revision history for Perl extension Email::Store.
 
+0.11  Sun Jul  4 14:31:38 BST 2004
+    - Fix to list correlator
+
 0.10  Sun Jul  4 11:58:40 BST 2004
     - Use Email::MIME::Attachment::Stripper.
     - Depend on SQL::Translator, since Class::DBI::DATA::Schema doesn't.

@@ -18,7 +18,7 @@ sub get_person {
         Email::Store::Addressing->search(
             address => $address->id
         );
-    if (@candidates == 1) { $$person_r = $candidates[0]->id; }
+    if (@candidates == 1) { $$person_r = $candidates[0]; }
 }
 
 1;
