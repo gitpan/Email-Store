@@ -1,9 +1,9 @@
 package Email::Store::Attachment;
 use base "Email::Store::DBI";
 use strict;
-use Mail::Message::Attachment::Stripper; # Until we write our own
+use Email::MIME::Attachment::Stripper; # Until we write our own
 use Email::Abstract;
-use Mail::Message;
+use Email::MIME;
 __PACKAGE__->table("attachment");
 __PACKAGE__->columns(All => qw[id mail filename content_type payload ]);
 __PACKAGE__->has_a(mail => "Email::Store::Mail");
@@ -13,11 +13,13 @@ sub on_store {
     my ($class, $mail) = @_;
     my $mm;
     { local $SIG{__WARN__} = sub { "Shut *UP*, Mail::Box!" };
-      my $mail_message = Email::Abstract->cast($mail->message, "Mail::Message");
-      $mm = Mail::Message::Attachment::Stripper->new( $mail_message );
+      my $mail_message = Email::Abstract->cast($mail->message, "Email::MIME");
+      $mm = Email::MIME::Attachment::Stripper->new( $mail_message );
     }
     $mail->add_to_attachments($_) for $mm->attachments;
-    $mail->message(Email::Abstract->as_string($mm->message));
+    # In case we twiddled it
+    $mm->message->header_set("Message-ID", $mail->message_id); 
+    $mail->message($mm->message->as_string);
     undef $mail->{simple}; # Invalidate cache
     $mail->update;
 }

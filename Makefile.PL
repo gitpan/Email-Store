@@ -13,10 +13,10 @@ WriteMakefile(
         Class::DBI => 0.9,
         Class::DBI::DATA::Schema => 0,
         Mail::ListDetector => 0.30,
-        Mail::Message => 0,
-        Mail::Message::Attachment::Stripper => 0,
+        Email::MIME::Attachment::Stripper => 1.1,
         Time::Piece => 0,
         File::Slurp => 0,
         Email::Address => 0,
+        SQL::Translator => 0,
     }, # e.g., Module::Name => 1.1
 );
