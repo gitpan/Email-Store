@@ -1,4 +1,4 @@
-use Test::More tests => 19;
+use Test::More tests => 20;
 use File::Slurp;
 BEGIN { unlink("t/test.db"); }
 use Email::Store "dbi:SQLite:dbname=t/test.db";
@@ -18,6 +18,9 @@ like($mails[0]->message, qr/PRE_PROCESS/, "Contains the right stuff");
 my $simple = $mails[0]->simple;
 isa_ok($simple, "Email::Simple");
 is($simple, $mails[0]->simple, "Email::Simple objects should be singleton");
+
+# Subject munged correctly
+is($simple->header("Subject"), "ttree problems - the sequel", "Subject had relevant bits removed");
 
 # And one list:
 my @lists = Email::Store::List->retrieve_all;

@@ -22,7 +22,15 @@ sub _detect {
 
 sub on_store {
     my ($class, $mail) = @_;
-    my $list = $class->_detect($mail->simple) or return;
+    my $simple = $mail->simple;
+    my $list = $class->_detect($simple) or return;
+    my $subject = $simple->header("Subject");
+    my $name = $list->name;
+    if ($subject =~ s/\[\Q$name\E\]\s*//ig) {
+        $simple->header_set("Subject", $subject);
+        $mail->message($simple->as_string);
+        $mail->update;
+    }
     $list->add_to_posts({mail => $mail->id});
 }
 

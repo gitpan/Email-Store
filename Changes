@@ -1,5 +1,8 @@
 Revision history for Perl extension Email::Store.
 
+0.13  Thu Jul 15 10:14:37 BST 2004
+    - List now removes list name in subject
+
 0.12  Sun Jul 11 12:36:29 BST 2004
     - Allow optional parameters in use call.
 
