@@ -11,6 +11,8 @@ lib/Email/Store/Attachment.pm
 lib/Email/Store/Date.pm
 lib/Email/Store/DBI.pm
 lib/Email/Store/Entity.pm
+lib/Email/Store/Entity/Correlator/List.pm
+lib/Email/Store/Entity/Correlator/Trivial.pm
 lib/Email/Store/List.pm
 lib/Email/Store/Mail.pm
 lib/Email/Store.pm
