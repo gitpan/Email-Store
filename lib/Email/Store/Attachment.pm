@@ -55,7 +55,7 @@ binary nulls, you need to do this in your call to C<use Email::Store>.
 
 __DATA__
 
-CREATE TABLE attachment (
+CREATE TABLE IF NOT EXISTS attachment (
     id           integer NOT NULL PRIMARY KEY AUTO_INCREMENT,
     mail         integer,
     payload      text,

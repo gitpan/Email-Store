@@ -21,7 +21,7 @@ sub setup {
     }
 }
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 # Preloaded methods go here.
 
 1;
@@ -101,6 +101,11 @@ C<lists>, and a list object for its C<posts>. Because of this, instead
 of looking at messages by their message ID, you can start by looking for
 a mailing list you're interested in and then navigate to the messages
 you want.
+
+=item C<Email::Store::Date>
+
+This adds the C<date> method to a C<mail> object, returning a C<Time::Piece>
+representing the date of the email.
 
 =item C<Email::Store::Entity>
 

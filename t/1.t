@@ -1,4 +1,4 @@
-use Test::More tests => 16;
+use Test::More tests => 19;
 use File::Slurp;
 BEGIN { unlink("t/test.db"); }
 use Email::Store "dbi:SQLite:dbname=t/test.db";
@@ -39,3 +39,9 @@ for (@entities) {
     is (@addressings, 1, "One addressing each");
     is ($addressings[0]->mail, $mails[0], "Referring to the right mail");
 }
+
+# Dates:
+my $date;
+ok($date = $mails[0]->date );
+is ($date->ymd,"2000-11-28");
+is ($date->hms,"21:15:46");

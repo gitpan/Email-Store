@@ -1,18 +1,19 @@
+# http://module-build.sourceforge.net/META-spec.html
 #XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
 name:         Email-Store
-version:      0.02
+version:      0.03
 version_from: lib/Email/Store.pm
 installdirs:  site
 requires:
-    Module::Pluggable::Ordered:    1
-    Mail::ListDetector:            0.3
-    Mail::Message::Attachment::Stripper: 0
     Class::DBI:                    0.9
     Class::DBI::DATA::Schema:      0
-    Module::Pluggable:             1.4
-    Mail::Message:                 0
-    Email::Simple:                 1
     DBD::SQLite:                   0
+    Email::Simple:                 1
+    Mail::ListDetector:            0.3
+    Mail::Message:                 0
+    Mail::Message::Attachment::Stripper: 0
+    Module::Pluggable:             1.4
+    Module::Pluggable::Ordered:    1
 
 distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.12
+generated_by: ExtUtils::MakeMaker version 6.21

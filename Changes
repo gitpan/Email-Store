@@ -1,5 +1,8 @@
 Revision history for Perl extension Email::Store.
 
+0.03 Sat Jun 19 17:03:12 BST 2004
+    - Add Date module contributed by Simon W
+
 0.02  Wed Jun 16 15:36:41 BST 2004
     - Always load up plugins
     - Connect addressings to mail
