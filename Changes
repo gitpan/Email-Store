@@ -1,5 +1,9 @@
 Revision history for Perl extension Email::Store.
 
+0.02  Wed Jun 16 15:36:41 BST 2004
+    - Always load up plugins
+    - Connect addressings to mail
+
 0.01  Tue May 18 13:26:10 2004
 	- original version; created by h2xs 1.22 with options
 		-AX -b 5.6.0 -n Email::Store

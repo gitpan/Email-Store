@@ -6,6 +6,8 @@ require Email::Store::DBI;
 use UNIVERSAL::require;
 use Email::Store::Mail;
 use Module::Pluggable search_path => ["Email::Store"];
+$_->require for Email::Store->plugins;
+
 sub import { shift; Email::Store::DBI->import(@_) }
 sub setup {
     for my $class (shift->plugins()) {
@@ -19,7 +21,7 @@ sub setup {
     }
 }
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 # Preloaded methods go here.
 
 1;
