@@ -1,5 +1,8 @@
 Revision history for Perl extension Email::Store.
 
+0.07 Wed Jun 30 18:17:10 BST 2004
+    - More addressings-entitys-names-addresses connections
+
 0.06  Tue Jun 29 08:50:30 BST 2004
     - Fix some dependencies
     - Timezone handling in tests
