@@ -43,5 +43,5 @@ for (@entities) {
 # Dates:
 my $date;
 ok($date = $mails[0]->date );
-is ($date->ymd,"2000-11-28");
-is ($date->hms,"21:15:46");
+is (($date - $date->tzoffset)->ymd,"2000-11-28");                               
+is (($date - $date->tzoffset)->hms,"21:15:46");                                 

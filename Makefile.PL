@@ -15,5 +15,7 @@ WriteMakefile(
         Mail::ListDetector => 0.30,
         Mail::Message => 0,
         Mail::Message::Attachment::Stripper => 0,
+        Time::Piece => 0,
+        File::Slurp => 0,
     }, # e.g., Module::Name => 1.1
 );
