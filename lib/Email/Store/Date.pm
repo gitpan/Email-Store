@@ -80,7 +80,7 @@ You can also search for all mails between two unix epochs
     # get all mails in the last day
     my $time = time();
     my $day  = 24*60*60;
-	Email::Store::Mail->search_between($time, $time-$day);
+    Email::Store::Mail->search_between($time, $time-$day);
 
 =head1 SEE ALSO
 

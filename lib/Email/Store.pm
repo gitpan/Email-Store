@@ -4,7 +4,9 @@ use strict;
 use warnings;
 require Email::Store::DBI;
 use UNIVERSAL::require;
-use vars qw(%only);
+use vars qw(%only $VERSION);
+
+$VERSION = '0.20';
 
 sub import { 
     shift; 
@@ -32,19 +34,20 @@ sub import {
 }
 
 sub setup {
-    for my $class (shift->plugins()) {
+    my $self    = shift;
+    my $verbose = shift || 0;
+    for my $class ($self->plugins()) {
         next unless $only{$class};
         $class->require or next;
 
         if ($class->can("run_data_sql")) {
-            warn "Setting up database in $class\n";
+            warn "Setting up database in $class\n" if $verbose;
             local $SIG{__WARN__} = sub {}; # No really, shut up
             $class->run_data_sql ;
         }
     }
 }
 
-our $VERSION = '0.16';
 # Preloaded methods go here.
 
 1;
@@ -199,6 +202,9 @@ again on installing any additional plugin modules, to create the new
 tables they want to use. Note that this does not retroactively index
 existing mail with the new functions provided by the modules you've just
 installed! - a C<reindex> method is planned, but is not there yet.
+
+It should be noted that passing in an optional true value to setup will
+cause it to be verbose about what it's doing.
 
 This is all the functionality that C<Email::Store> itself provides. See
 the documentation to the various plugins for their public interface,
