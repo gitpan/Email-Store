@@ -1,0 +1,16 @@
+Changes
+mailstore.sql
+mailman-test
+Makefile.PL
+MANIFEST
+README
+t/1.t
+t/attach-test
+t/attach.t
+lib/Email/Store/Attachment.pm
+lib/Email/Store/DBI.pm
+lib/Email/Store/Entity.pm
+lib/Email/Store/List.pm
+lib/Email/Store/Mail.pm
+lib/Email/Store.pm
+META.yml                                Module meta-data (added by MakeMaker)
