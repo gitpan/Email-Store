@@ -17,5 +17,6 @@ WriteMakefile(
         Mail::Message::Attachment::Stripper => 0,
         Time::Piece => 0,
         File::Slurp => 0,
+        Email::Address => 0,
     }, # e.g., Module::Name => 1.1
 );

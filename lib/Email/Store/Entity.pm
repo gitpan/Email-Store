@@ -3,7 +3,7 @@ use base "Email::Store::DBI";
 Email::Store::Entity->table("entity");
 Email::Store::Entity->columns(Primary => qw/id/);
 Email::Store::Entity->columns(All => qw/id notes/); # notes is a hack.
-use Mail::Address; # XXX Use something else in future
+use Email::Address; 
 use Module::Pluggable::Ordered 
     search_path => ["Email::Store::Entity::Correlator"];
 
@@ -12,7 +12,7 @@ sub on_store {
     my ($self, $mail) = @_;
     my $simple = $mail->simple;
     for my $role (qw(To From Cc Bcc)) {
-        my @addrs = Mail::Address->parse($simple->header($role));
+        my @addrs = Email::Address->parse($simple->header($role));
         for my $addr (@addrs) { 
             my $name = Email::Store::Entity::Name->find_or_create({
                 name => ($addr->name || " ")

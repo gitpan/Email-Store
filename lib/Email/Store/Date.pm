@@ -26,10 +26,20 @@ sub on_store_order { 80 }
 
 sub on_store {
     my ($self, $mail) = @_;
-	my $date   = $mail->simple->header('date');
+    my $simple = $mail->simple;
+	my $date   = $simple->header('date')
+                 || _get_date_in_received_header($simple)
+                 || $simple->header('resent-date');
 	my $time   = str2time($date);
 	Email::Store::Date->create( { mail => $mail->id, date => $time } );
 
+}
+
+sub _get_date_in_received_header {
+    my @received = shift->header("Received");
+    return unless @received;
+    my $date = $received[-1];
+    $date =~ s/.*;// and return $date;
 }
 
 sub on_gather_plucene_fields_order { 80 }

@@ -1,5 +1,9 @@
 Revision history for Perl extension Email::Store.
 
+0.09 Sat Jul  3 15:46:53 BST 2004
+    - Try harder to find a date field
+    - Use Email::Address.
+
 0.08  Thu Jul  1 00:15:28 BST 2004
     - Fix another entity correlation bug
     - Put the correlator in the MANIFEST, oh my
