@@ -4,13 +4,36 @@ use strict;
 use warnings;
 require Email::Store::DBI;
 use UNIVERSAL::require;
-use Email::Store::Mail;
-use Module::Pluggable search_path => ["Email::Store"];
-$_->require for Email::Store->plugins;
+use vars qw(%only);
 
-sub import { shift; Email::Store::DBI->import(@_) }
+sub import { 
+    shift; 
+
+    my $caller = caller();
+    my %args   = ( search_path => [ "Email::Store" ] );
+
+    if ( defined $_[0] && ref($_[0]) eq 'HASH' ) {
+            my $opts = shift;
+            if (exists $opts->{'only'}) {
+                $only{"Email::Store::$_"} = 1 for @{$opts->{'only'}};
+                $args{'only'} = [ keys %only ];                
+            }
+    } 
+
+    require Module::Pluggable;
+    Module::Pluggable->import(%args);
+
+    Email::Store::DBI->import(@_);
+
+    for my $class (Email::Store->plugins) {
+        $class->require;
+        $only{$class} = 1;
+    }
+}
+
 sub setup {
     for my $class (shift->plugins()) {
+        next unless $only{$class};
         $class->require or next;
 
         if ($class->can("run_data_sql")) {
@@ -21,7 +44,7 @@ sub setup {
     }
 }
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 # Preloaded methods go here.
 
 1;
@@ -69,6 +92,24 @@ C<Mail::Thread> allowing you to navigate mails by their position in a
 mail thread; the planned non-core C<Email::Store::Plucene> module plugs
 into the indexing process and stores information about emails in a
 Plucene search index for quick retrieval later, and so on.
+
+=head1 OPTIONS
+
+The generic way to use C<Email::Store> is 
+
+    use Email::Store 'dbi:mysql:mailstore';
+
+However you can also pass a has ref in as the first argument.
+
+This hash ref can contain arbitary key/value pairs however the
+only ones currently supported are B<only> and B<except> which 
+both take an array ref of plugin names. B<only> means that 
+C<Email::Store> will only load those plugins and B<except> means
+it will load everything except those.
+
+
+    use Email::Store { only => [ "Email::Store::Mail" ] }, 'dbi:mysql:mailstore';
+
 
 =head1 Core C<Email::Store> modules
 

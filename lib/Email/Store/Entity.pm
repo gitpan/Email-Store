@@ -6,7 +6,10 @@ Email::Store::Entity->columns(All => qw/id notes/); # notes is a hack.
 use Email::Address; 
 use Module::Pluggable::Ordered 
     search_path => ["Email::Store::Entity::Correlator"];
-
+Email::Store::Entity->set_sql(distinct_entity => q{
+    SELECT     DISTINCT entity id
+    FROM addressing
+    WHERE name = ?    AND address = ?});
 sub on_store_order { 1 }
 sub on_store {
     my ($self, $mail) = @_;

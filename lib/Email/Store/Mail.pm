@@ -3,13 +3,16 @@ use base 'Email::Store::DBI';
 use Time::HiRes;
 use strict; 
 use warnings;
+
+require Email::Store;
+
 Email::Store::Mail->table("mail");
 Email::Store::Mail->columns(All => qw/message_id message/);
 Email::Store::Mail->columns(Primary => qw/message_id/);
 Email::Store::Mail->columns(TEMP => qw/simple/);
+use Module::Pluggable::Ordered search_path => ["Email::Store"], only => [ keys %Email::Store::only ];
 
 use Email::Simple;
-use Module::Pluggable::Ordered search_path => ["Email::Store"];
 
 sub _simple { Email::Simple->new(shift); } # RFC2822 -> Email::Simple
 
