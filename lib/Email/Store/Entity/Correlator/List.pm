@@ -13,11 +13,7 @@ sub get_person {
     return unless $list;
     my %seen;
     my @candidates = 
-        grep { !$seen{$_->id}++ }
-        map { $_->entity }
-        Email::Store::Addressing->search(
-            address => $address->id
-        );
+        Email::Store::Entity->search_distinct_entity_for_address( $address->id);
     if (@candidates == 1) { $$person_r = $candidates[0]; }
 }
 

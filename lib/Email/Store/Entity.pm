@@ -11,6 +11,14 @@ Email::Store::Entity->set_sql(distinct_entity => q{
     SELECT     DISTINCT entity id
     FROM addressing
     WHERE name = ?    AND address = ?});
+Email::Store::Entity->set_sql(distinct_entity_for_name => q{
+    SELECT     DISTINCT entity id
+    FROM addressing
+    WHERE name = ?});
+Email::Store::Entity->set_sql(distinct_entity_for_address => q{
+    SELECT     DISTINCT entity id
+    FROM addressing
+    WHERE address = ?});
 sub on_store_order { 1 }
 sub on_store {
     my ($self, $mail) = @_;

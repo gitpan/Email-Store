@@ -3,11 +3,15 @@ mailstore.sql
 mailman-test
 Makefile.PL
 MANIFEST
+MANIFEST.SKIP
 README
 t/1.t
 t/2.t
 t/attach-test
 t/attach.t
+t/date.t
+t/date-test
+t/date-test2
 t/limit.t
 t/troublesome
 lib/Email/Store/Attachment.pm

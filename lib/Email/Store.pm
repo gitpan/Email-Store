@@ -44,7 +44,7 @@ sub setup {
     }
 }
 
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 # Preloaded methods go here.
 
 1;
@@ -146,7 +146,8 @@ you want.
 =item C<Email::Store::Date>
 
 This adds the C<date> method to a C<mail> object, returning a C<Time::Piece>
-representing the date of the email.
+representing the date of the email. It also provides various searches for
+mails between epoch times and for years, months and days.
 
 =item C<Email::Store::Entity>
 
@@ -313,7 +314,16 @@ indexing, reindexing and other processes.
 
 =head1 AUTHOR
 
-Simon Cozens, E<lt>simon@cpan.orgE<gt>
+The original author is Simon Cozens, E<lt>simon@cpan.orgE<gt>
+Currently maintained by Simon Wistow <simon@thegestalt.org>
+
+=head1 SUPPORT
+
+This module is part of the Perl Email Project - http://pep.kwiki.org/
+
+There is a mailing list at pep@perl.org (subscribe at pep-subscribe@perl.org) 
+and an archive available at http://nntp.perl.org/group/pep.php
+
 
 =head1 CREDITS
 

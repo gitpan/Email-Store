@@ -1,5 +1,11 @@
 Revision history for Perl extension Email::Store.
 
+0.16 Sun Dec 26 12:14:57 GMT 2004
+    - Some changes to Date
+    - Require certain versions of Email::Simple and Email::MIME
+    - Update contact information
+    - Happy Boxing day
+
 0.15 Thu Jul 15 15:04:54 BST 2004
     - After list order so that it gets does before summary gets to the
       mail
@@ -52,6 +58,6 @@ Revision history for Perl extension Email::Store.
     - Connect addressings to mail
 
 0.01  Tue May 18 13:26:10 2004
-	- original version; created by h2xs 1.22 with options
-		-AX -b 5.6.0 -n Email::Store
+    - original version; created by h2xs 1.22 with options
+        -AX -b 5.6.0 -n Email::Store
 
