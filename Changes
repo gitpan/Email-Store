@@ -1,5 +1,13 @@
 Revision history for Perl extension Email::Store.
 
+0.24 Mon Feb  7 12:02:32 GMT 2005
+    - There were various problems with attachments which seem to be todo with 
+      Email::MIME therefore switch (hopefully temporarily) to MIME::Parser
+    - Rejigged tests to make the root dir cleaner
+    - Fix for TZ issues in tests (thanks to Scott McWhirter)
+    - Make SQLite check work with SQLite2
+    
+
 0.23 Thu Feb  3 16:20:11 GMT 2005
     - gah. fix fuckwittedness
 

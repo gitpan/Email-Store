@@ -6,7 +6,7 @@ use Email::Store "dbi:SQLite:dbname=t/test.db";
 Email::Store->setup;
 ok(1, "Set up");
 
-my $data = read_file("mailman-test");
+my $data = read_file("t/mailman-test");
 Email::Store::Mail->store($data);
 
 # We need one mail:

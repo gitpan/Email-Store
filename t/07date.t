@@ -1,6 +1,11 @@
 use Test::More tests => 11;
 use File::Slurp;
 BEGIN { unlink("t/test.db"); }
+
+# Since the test e-mails were sent during BST we need to fake that it's BST now
+# Africa/Luanda is used because it doesn't have a different summertime offset
+$ENV{TZ} = 'Africa/Luanda';
+
 use Email::Store "dbi:SQLite:dbname=t/test.db";
 Email::Store->setup;
 ok(1, "Set up");

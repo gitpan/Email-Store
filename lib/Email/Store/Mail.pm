@@ -14,7 +14,6 @@ Email::Store::Mail->columns(TEMP => qw/simple/);
 use Email::Simple;
 use Email::MessageID;
 
-
 sub _simple { Email::Simple->new(shift); } # RFC2822 -> Email::Simple
 
 sub simple {
@@ -28,6 +27,7 @@ sub store {
     my ($class, $rfc822) = @_;
     my $simple = Email::Simple->new($rfc822);
     my $msgid = $class->fix_msg_id($simple);
+
     my $self;
 
     if ($self = $class->retrieve($msgid)) {
@@ -36,7 +36,7 @@ sub store {
     }
 
     $self = $class->create ({ message_id => $msgid,
-                              message    => $rfc822,
+                              message    => $simple->as_string,
                               simple     => $simple });
     $self->call_plugins("on_store", $self);
     $self;

@@ -6,7 +6,7 @@ require Email::Store::DBI;
 use UNIVERSAL::require;
 use vars qw(%only $VERSION);
 
-$VERSION = '0.23';
+$VERSION = '0.24';
 
 sub import { 
     shift; 
@@ -321,7 +321,7 @@ indexing, reindexing and other processes.
 =head1 AUTHOR
 
 The original author is Simon Cozens, E<lt>simon@cpan.orgE<gt>
-Currently maintained by Simon Wistow <simon@thegestalt.org>
+Currently maintained by Simon Wistow E<lt>simon@thegestalt.orgE<gt>
 
 =head1 SUPPORT
 

@@ -7,7 +7,7 @@ sub import {
     if (@params) {
         $self->set_db(Main => @params);
         $self->translate(mysql => $self->__driver);
-        if ($self->__driver eq "SQLite") {
+        if ($self->__driver =~ /SQLite/) {
             $self->db_Main->{sqlite_handle_binary_nulls} = 1;
         }
     }
