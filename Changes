@@ -1,5 +1,9 @@
 Revision history for Perl extension Email::Store.
 
+0.15 Thu Jul 15 15:04:54 BST 2004
+    - After list order so that it gets does before summary gets to the
+      mail
+
 0.14 Thu Jul 15 13:57:44 BST 2004
     - Store addressings in UTF-8.
 

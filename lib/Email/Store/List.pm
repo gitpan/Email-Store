@@ -7,7 +7,7 @@ Email::Store::List->table("list");
 Email::Store::List->columns(All => qw/id name posting_address/);
 Email::Store::List->columns(Primary => qw/id/);
 
-sub on_store_order { 99 }
+sub on_store_order { 70 }
 
 sub _detect {
     my ($self, $simple) = @_;
