@@ -9,6 +9,7 @@ WriteMakefile(
         Module::Pluggable::Ordered => 1.0,
         Module::Pluggable => 1.4,
         Email::Simple => 1.0,
+        Email::MIME => 0,
         DBD::SQLite => 0,
         Class::DBI => 0.9,
         Class::DBI::DATA::Schema => 0,

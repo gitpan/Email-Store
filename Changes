@@ -1,5 +1,8 @@
 Revision history for Perl extension Email::Store.
 
+0.14 Thu Jul 15 13:57:44 BST 2004
+    - Store addressings in UTF-8.
+
 0.13  Thu Jul 15 10:14:37 BST 2004
     - List now removes list name in subject
 

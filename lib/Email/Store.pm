@@ -44,7 +44,7 @@ sub setup {
     }
 }
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 # Preloaded methods go here.
 
 1;
