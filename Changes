@@ -1,5 +1,8 @@
 Revision history for Perl extension Email::Store.
 
+0.05  Mon Jun 21 20:50:29 BST 2004
+    - Credits are important...
+
 0.04  Mon Jun 21 18:28:09 BST 2004
     - Connect addressings to mail the other way...
 

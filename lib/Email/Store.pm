@@ -21,7 +21,7 @@ sub setup {
     }
 }
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 # Preloaded methods go here.
 
 1;
@@ -273,6 +273,17 @@ indexing, reindexing and other processes.
 =head1 AUTHOR
 
 Simon Cozens, E<lt>simon@cpan.orgE<gt>
+
+=head1 CREDITS
+
+Many of the ideas (although none of the code) for this package were
+taken from my work on a project called Twingle, for a company called
+Kasei. While I was at Kasei, I did a lot of thinking about handling
+email, storing it, analyzing it and presenting it on the web; I left the
+company with all that knowledge in my head, and wrote C<Email::Store>
+with the knowledge and tools that I acquired. Thanks to Kasei for the
+experience that I gained there and the good grace they've shown as I
+release C<Email::Store>.
 
 =head1 COPYRIGHT AND LICENSE
 
