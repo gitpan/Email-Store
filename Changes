@@ -1,5 +1,8 @@
 Revision history for Perl extension Email::Store.
 
+0.23 Thu Feb  3 16:20:11 GMT 2005
+    - gah. fix fuckwittedness
+
 0.22 Thu Feb  3 16:11:14 GMT 2005
     - various fixes to make it work under boxen which are not my own.
       many many thanks to Richard Clamp and Scott McWhirter.

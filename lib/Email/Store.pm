@@ -6,7 +6,7 @@ require Email::Store::DBI;
 use UNIVERSAL::require;
 use vars qw(%only $VERSION);
 
-$VERSION = '0.22';
+$VERSION = '0.23';
 
 sub import { 
     shift; 
@@ -22,8 +22,8 @@ sub import {
             }
     } 
 
-    require Module::Pluggable;
-    Module::Pluggable->import(%args);
+    require Module::Pluggable::Ordered;
+    Module::Pluggable::Ordered->import(%args);
 
     Email::Store::DBI->import(@_);
 
