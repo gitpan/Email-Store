@@ -1,5 +1,8 @@
 Revision history for Perl extension Email::Store.
 
+0.21 Thu Jan 27 16:33:32 GMT 2005
+    - fixed a permission problem on PAUSE
+
 0.20 Thu Jan 27 15:16:48 GMT 2005
     - The indexer seems unhappy with 0.16, attempt to froce a rebuild
     - made setup() to be quieter unless you tell it not to be
