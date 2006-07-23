@@ -12,6 +12,7 @@ Email::Store::Mail->columns(All => qw/message_id message/);
 Email::Store::Mail->columns(Primary => qw/message_id/);
 Email::Store::Mail->columns(TEMP => qw/simple/);
 use Email::Simple;
+use Email::MIME;
 use Email::MessageID;
 
 sub _simple { Email::Simple->new(shift); } # RFC2822 -> Email::Simple
@@ -52,6 +53,23 @@ sub fix_msg_id {
     $simple->header_set("Message-ID", $fake);
     $fake =~ s/^.(.*).$/$1/; # we don't want the <>
     return $fake;
+}
+
+
+sub utf8_body {
+    my $mail = shift;
+    my $mime = Email::MIME->new($mail->message);
+
+    my $body = $mime->body;
+    my $charset = $mime->{ct}->{attributes}{charset};
+    if ($charset and $charset !~ /utf-?8/i) {
+        eval {
+            require Encode;
+            $body = Encode::decode($charset, $body);
+            Encode::_utf8_off($body);
+        };
+    }
+    $body;
 }
 
 1;
