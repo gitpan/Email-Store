@@ -25,4 +25,5 @@ lib/Email/Store/Entity/Correlator/Trivial.pm
 lib/Email/Store/List.pm
 lib/Email/Store/Mail.pm
 lib/Email/Store.pm
+LICENSE
 META.yml                                 Module meta-data (added by MakeMaker)
