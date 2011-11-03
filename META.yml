@@ -1,35 +1,36 @@
---- #YAML:1.0
-name:               Email-Store
-version:            0.256
-abstract:           ~
-author:  []
-license:            perl
-distribution_type:  module
-configure_requires:
-    ExtUtils::MakeMaker:  0
+---
+abstract: unknown
+author:
+  - unknown
 build_requires:
-    ExtUtils::MakeMaker:  0
-requires:
-    Class::DBI:           3.0.3
-    Class::DBI::DATA::Schema:  0
-    DBD::SQLite:          0
-    Email::Address  :     1.8
-    Email::Date     :     1.1
-    Email::MessageID:     0
-    Email::MIME:          1.8
-    Email::Simple:        1.92
-    File::Slurp:          0
-    Mail::ListDetector:   0.31
-    MIME::Parser:         0
-    Module::Pluggable:    2.6
-    Module::Pluggable::Ordered:  1
-    SQL::Translator:      0
-    Time::Piece:          0
-no_index:
-    directory:
-        - t
-        - inc
-generated_by:       ExtUtils::MakeMaker version 6.50
+  ExtUtils::MakeMaker: 0
+configure_requires:
+  ExtUtils::MakeMaker: 0
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 6.59, CPAN::Meta::Converter version 2.112621'
+license: perl
 meta-spec:
-    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
-    version:  1.4
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Email-Store
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  Class::DBI: v3.0.3
+  Class::DBI::DATA::Schema: 0
+  DBD::SQLite: 0
+  Email::Address: 1.8
+  Email::Date: 1.1
+  Email::MIME: 1.8
+  Email::MessageID: 0
+  Email::Simple: 1.92
+  File::Slurp: 0
+  MIME::Parser: 0
+  Mail::ListDetector: 0.31
+  Module::Pluggable: 2.6
+  Module::Pluggable::Ordered: 1
+  SQL::Translator: 0
+  Time::Piece: 0
+version: 0.257
